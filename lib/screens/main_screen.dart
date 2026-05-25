@@ -3,7 +3,7 @@ import 'dashboard_screen.dart';
 import 'transactions_screen.dart';
 import 'debt_screen.dart';
 import 'add_category_screen.dart';
-
+import '../core/update_service.dart';
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
 
@@ -28,6 +28,19 @@ class _MainScreenState extends State<MainScreen> {
     "Categories",
   ];
 
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance
+        .addPostFrameCallback((_) {
+
+      UpdateService.checkForUpdate(
+        context,
+      );
+    });
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
