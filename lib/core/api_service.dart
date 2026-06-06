@@ -428,6 +428,47 @@ Future<bool> login(
     return res;
   }
 
+  Future<Map<String, dynamic>> getAnalyticsSummary({
+    required int month,
+    required int year,
+  }) async {
+
+    final res = await authorizedGet(
+      "reports/analytics/summary/?month=$month&year=$year",
+    );
+
+    if (res.statusCode == 200) {
+      return jsonDecode(res.body);
+    }
+
+    throw Exception("Failed to load analytics");
+  }
+
+  Future<List<dynamic>> getMonthlyTrend() async {
+
+  final res = await authorizedGet(
+    "reports/analytics/monthly-trend/",
+  );
+
+  if (res.statusCode == 200) {
+    return jsonDecode(res.body);
+  }
+
+  throw Exception("Monthly trend failed");
+}
+
+Future<List<dynamic>> getCategoryBreakdown() async {
+
+  final res = await authorizedGet(
+    "reports/analytics/category-breakdown/",
+  );
+
+  if (res.statusCode == 200) {
+    return jsonDecode(res.body);
+  }
+
+  throw Exception("Category breakdown failed");
+}
   Future<Map<String, dynamic>> parseAITransaction(
   String text,
 ) async {

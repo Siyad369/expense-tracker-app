@@ -4,6 +4,8 @@ import 'transactions_screen.dart';
 import 'debt_screen.dart';
 import 'add_category_screen.dart';
 import '../core/update_service.dart';
+import 'reports_screen.dart';
+
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
 
@@ -19,6 +21,7 @@ class _MainScreenState extends State<MainScreen> {
     TransactionsScreen(),
     DebtScreen(),
     AddCategoryScreen(),
+    ReportsScreen(),
   ];
 
   final List<String> titles = [
@@ -26,6 +29,7 @@ class _MainScreenState extends State<MainScreen> {
     "Transactions",
     "Debts",
     "Categories",
+    "Reports",
   ];
 
   @override
@@ -71,6 +75,10 @@ class _MainScreenState extends State<MainScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.category),
             label: "Category",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.analytics),
+            label: "Reports",
           ),
         ],
       ),
